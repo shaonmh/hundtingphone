@@ -13,8 +13,8 @@ const displayPhones = (phones, isShowAll) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent = "";
 
-  const showAllCont = document.getElementById("show-all-container");
   //display show all button if there are more than 9 phones
+  const showAllCont = document.getElementById("show-all-container");
 
   if (phones.length > 9 && !isShowAll) {
     showAllCont.classList.remove("hidden");
@@ -24,6 +24,8 @@ const displayPhones = (phones, isShowAll) => {
 
   if (!isShowAll) {
     phones = phones.slice(0, 9);
+  } else {
+    phones = phones;
   }
 
   phones.forEach((phone) => {
@@ -59,7 +61,11 @@ const handleSearch = (isShowAll) => {
   spinner(true);
   let searchInput = document.getElementById("search-input").value;
   console.log(searchInput);
-  loadPhone(searchInput, isShowAll);
+  if (searchInput == "") {
+    loadPhone((searchInput = "iphone"), isShowAll);
+  } else {
+    loadPhone(searchInput, isShowAll);
+  }
 };
 
 const handleShowAll = () => {
@@ -97,4 +103,4 @@ const handleDetails = async (id) => {
   my_modal_5.showModal();
 };
 
-loadPhone();
+loadPhone("iphone", false);
