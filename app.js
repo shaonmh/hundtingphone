@@ -73,7 +73,9 @@ const handleDetails = async (id) => {
   const data = await res.json();
 
   const details = data.data;
+
   const detailsModal = document.createElement("div");
+
   detailsModal.innerHTML = `
   <div class="modal-box">
     <h3 class="font-bold text-lg">${details.name}</h3>
@@ -89,6 +91,7 @@ const handleDetails = async (id) => {
 
   console.log(details);
   const modalContainer = document.getElementById("my_modal_5");
+  modalContainer.innerHTML = ``;
   console.log(modalContainer);
   modalContainer.appendChild(detailsModal);
   my_modal_5.showModal();
